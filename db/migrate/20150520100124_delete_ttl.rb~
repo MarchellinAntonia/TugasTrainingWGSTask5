@@ -1,0 +1,4 @@
+class DeleteTtl < ActiveRecord::Migration
+  def change
+  end
+end

@@ -1,0 +1,4 @@
+class AddKolomSex < ActiveRecord::Migration
+  def change
+  end
+end

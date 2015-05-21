@@ -1,0 +1,12 @@
+class CreateTable < ActiveRecord::Migration
+  def up
+	create_table :articles do |t|
+        t.string :title
+        t.string :content
+
+        t.timestamps
+  end
+
+  def down
+  end
+end

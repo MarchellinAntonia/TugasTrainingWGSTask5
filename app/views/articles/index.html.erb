@@ -1,0 +1,44 @@
+<div class="container">
+	<div class="page-header">
+	  <h1>Halaman Artikel Index</h1>
+	  
+	</div>
+	<% @articles.each do |article| %>
+
+	<h3><%= article.title %></h3>
+
+	<%= article.content.truncate(20) %>
+
+	<%= link_to 'read more', article_path(article.id) %>
+
+	<h4>status : <%= article.status %></h4>
+
+	<p>
+	<%= link_to 'edit', edit_article_path(article.id), :class => "btn btn-xs btn-success" %>
+	<%= link_to 'delete', article_path(article.id), method: "DELETE", data: {confirm: 'Delete this article ? '}, :class => "btn btn-xs btn-danger" %>
+	</p>
+
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>Id User</th>
+				<th>Comment</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			<% article.comments.each do |comment| %>
+			<tr>
+				<td><%= comment.user_is %></td>
+				<td><%= comment.content %></td>
+			</tr>
+			<% end %>
+			
+		</tbody>
+
+
+	<hr/>
+	</table>
+
+<% end %>
+</div>

@@ -1,0 +1,4 @@
+class DeleteMessage < ActiveRecord::Migration
+  def change
+  end
+end

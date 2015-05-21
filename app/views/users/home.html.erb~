@@ -1,0 +1,70 @@
+<div class="container">
+	<div class="page-header">
+	  <h1>Insert new User</h1>
+	</div>
+	<%= form_for @user, :html => {:class => "form-horizontal", :role => "form"} do |f| %>
+		<div class="form-group">
+			<%= f.label :name, "Name:", class: "col-sm-2 control-label" %>
+			<div class="col-sm-5">
+				<%= f.text_field :name, {:class => "form-control", :required => "required", :placeholder => "Insert your name .."} %>
+			</div>
+			<% if @user.errors[:name].any? %>
+			<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+				<div class="alert alert-danger" style="padding:1%; padding-left:3%; margin:0;">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					<strong>Error!</strong> name <%= @user.errors[:name].first unless @user.errors[:name].blank? %>
+				</div>
+			</div>
+			<% end %>
+		</div>
+		<div class="form-group">
+			<%= f.label :email, "Email:", class: "col-sm-2 control-label" %>
+			<div class="col-sm-5">
+				<%= f.text_field :email, {:class => "form-control", :required => "required", :placeholder => "Insert your email .."} %>
+			</div>
+			<% if @user.errors[:email].any? %>
+			<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+				<div class="alert alert-danger" style="padding:1%; padding-left:3%; margin:0;">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					<strong>Error!</strong> email <%= @user.errors[:email].first unless @user.errors[:email].blank? %>
+				</div>
+			</div>
+			<% end %>
+		</div>
+		<div class="form-group">
+			<%= f.label :phone, "Phone:", class: "col-sm-2 control-label" %>
+			<div class="col-sm-5">
+				<%= f.text_field :phone, {:class => "form-control", :required => "required", :placeholder => "Insert your phone number .."} %>
+			</div>
+			<% if @user.errors[:phone].any? %>
+			<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+				<div class="alert alert-danger" style="padding:1%; padding-left:3%; margin:0;">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					<strong>Error!</strong> phone <%= @user.errors[:phone].first unless @user.errors[:phone].blank? %>
+				</div>
+			</div>
+			<% end %>
+		</div>
+		<div class="form-group">
+			<%= f.label :address, "Address:", class: "col-sm-2 control-label" %>
+			<div class="col-sm-5">
+				<%= f.text_area :address, {:class => "form-control", :required => "required", :placeholder => "Insert your address .."} %>
+			</div>
+			<% if @user.errors[:address].any? %>
+			<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+				<div class="alert alert-danger" style="padding:1%; padding-left:3%; margin:0;">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					<strong>Error!</strong> address <%= @user.errors[:address].first unless @user.errors[:address].blank? %>
+				</div>
+			</div>
+			<% end %>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-10 col-sm-offset-2">
+				<%= f.submit "Submit", class: "btn btn-default btn-primary" %> 
+			</div>
+		</div>
+	<% end %>
+</div>
+
+

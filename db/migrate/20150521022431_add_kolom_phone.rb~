@@ -1,0 +1,4 @@
+class AddKolomPhone < ActiveRecord::Migration
+  def change
+  end
+end
