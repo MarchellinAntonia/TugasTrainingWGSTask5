@@ -1,11 +1,32 @@
 <div class="container">
 	<div class="page-header">
-	  <h1>Halaman Artikel Index</h1>
+	  <h1>Halaman Artikel Index  </h1>
 	  
 	</div>
-	<% @articles.each do |article| %>
 
-	<h3><%= article.title %></h3>
+<div class="panel">
+                
+
+	<table border = '0' width = '500px'>
+		<tr>
+			<td align = 'center'><%= link_to "Add new article", {:controller => "articles", :action => "new" }, :class => "btn btn-sm btn-primary" %></td>
+			<%= form_tag import_articles_path, multipart: true, :class => "form-horizontal", :role => "form" do %>
+			<td align = 'center'><%= file_field_tag :file, class: "btn btn-default" %>  </td>
+			<td align = 'center'><%= submit_tag "Import", class: "btn btn-default btn-primary" %></td>
+
+                <% end %>
+		</tr>
+	</table>
+
+    </div>
+
+<div class="panel">
+	<%= will_paginate @articles %>
+
+	<% @articles.each do |article| %>
+	<div class = "list-group-item">
+
+	<h4><%= article.title %></h4>
 
 	<%= article.content.truncate(20) %>
 
@@ -18,51 +39,10 @@
 	<%= link_to 'delete', article_path(article.id), method: "DELETE", data: {confirm: 'Delete this article ? '}, :class => "btn btn-xs btn-danger" %>
 	</p>
 
-	<table class="table table-hover">
-		<thead>
-			<tr>
-				<th>Id User</th>
-				<th>Comment</th>
 
-			</tr>
-		</thead>
-		<tbody>
-			<% article.comments.each do |comment| %>
-			<tr>
-				<td><%= comment.user_is %></td>
-				<td><%= comment.content %></td>
-			</tr>
-			<% end %>
-			<tr>
-				<%= form_for @comment, :html => {:class => "form-horizontal", :role => "form"} do |f| %>
-					<div class="form-group">
-					<div class="col-sm-5">
-						<%= f.text_field :content, {:class => "form-control", :required => "required", :placeholder => "Insert your comment .."} %>
-					</div>
-					<% if @comment.errors[:content].any? %>
-					<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-						<div class="alert alert-danger" style="padding:1%; padding-left:3%; margin:0;">
-							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-							<strong>Error!</strong> Content <%= @comment.errors[:content].first unless @comment.errors[:content].blank? %>
-						</div>
-					</div>
-					<% end %>
-				</div>
-
-
-					<div class="form-group">
-						<div class="col-sm-10 col-sm-offset-2">
-							<%= f.submit "Add Comments", class: "btn btn-default btn-primary" %> 
-						</div>
-					</div>
-				<% end %>
-
-</tr>
-		</tbody>
-
-
-	<hr/>
-	</table>
-
+</div>
 <% end %>
+
+</div>
+
 </div>

@@ -1,34 +1,45 @@
-<h1>Articles#new</h1>
- <%= form_for @article do |f| %>
+<div class="container">
+	<div class="page-header">
+	  <h1>Insert new Articles</h1>
+	</div>
 
-<%= f.label :title %>
+<%= form_for @article, :html => {:class => "form-horizontal", :role => "form"} do |f| %>
+		<div class="form-group">
 
-<%= f.text_field :title %>
+			<%= f.label :title, "Title:", class: "col-sm-2 control-label" %>
+			<div class="col-sm-5">
+			<%= f.text_field :title, {:class => "form-control", :required => "required"} %>
+			</div>
+			<%= @article.errors[:title].first unless @article.errors[:title].blank? %>
+		</div>
 
-<%= @article.errors[:title].first unless @article.errors[:title].blank? %>
+		<div class="form-group">
 
-<br/>
+			<%= f.label :content, "Content:", class: "col-sm-2 control-label" %>
+			<div class="col-sm-5">
+			<%= f.text_area :content, {:class => "form-control", :required => "required"} %>
+			</div>
+			<%= @article.errors[:content].first unless @article.errors[:content].blank? %>
+		</div>
 
-<%= f.label :content %>
+		<div class="form-group">
 
-<%= f.text_area :content, cols: 20, rows: 10 %>
+			<%= f.label :status, class: "col-sm-2 control-label" %>
+			<div class="col-sm-5">
+				<%= f.radio_button :status, "active", :checked => true %>
+				<%= label :article_status, 'active' %>
+				<%= f.radio_button :status, "off", :checked => false %>
+				<%= label :article_status, 'off' %>
+			</div>
+		</div>
 
-<%= @article.errors[:content].first unless @article.errors[:content].blank? %>
+		<div class="form-group">
+			<div class="col-sm-10 col-sm-offset-2">
+				<%= f.submit "Submit", class: "btn btn-default btn-primary" %> 
+			</div>
+		</div>
+	<% end %>
 
-<br/>
 
-<%= f.label :status %>
 
-<%= f.radio_button :status, "active" %>
-
-<%= label :article_status, 'active' %>
-
-<%= f.radio_button :status, "off", :checked => true %>
-
-<%= label :article_status, 'off' %>
-
-<br/>
-
-<%= f.submit :submit %>
-
-<% end %>
+</div>

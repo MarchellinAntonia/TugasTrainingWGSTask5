@@ -12,17 +12,14 @@ class CommentsController < ApplicationController
   end
 
 def create
-
-    @comments = Comment.new(params_comment)
-
-    if @comments.save
-        flash[:notice] = "Success Add Records"
-        redirect_to action: 'index'
-    else
-        flash[:error] = "data not valid"
-        render 'new'
-    end
-
+  	respond_to do |format|
+		@comment = Comment.new(params_comment)
+		if @comment.save
+			format.js {@comments = Article.find_by_id(params[:comment][:article_id]).comments.order("id desc")}
+		else
+			format.js {@article = Article.find_by_id(params[:comment][:article_id])}
+		end
+	end
 end
 
 def update

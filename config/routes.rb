@@ -5,8 +5,12 @@ AppRuby::Application.routes.draw do
   #resources :users
 
 #aktifin artikel dan comments
-  root :to => "articles#index"
-  resources :articles
+  root "articles#index"
+  resources :articles do
+    collection { post :import }
+  end
+
+  resources :comments
   
   #get "articles/index"
   #get "articles/new"

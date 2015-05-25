@@ -1,5 +1,11 @@
-<h1>Articles#edit</h1>
- <%= form_for @article do |f| %>
+<div class="container">
+	<div class="page-header">
+	  <h1>Halaman Edit Article</h1>
+	  
+	</div>
+
+
+<%= form_for @article do |f| %>
 
 <%= f.label :title %>
 
@@ -33,5 +39,7 @@
 <div>
 
 <%= link_to "back to index", articles_path %>
+
+</div>
 
 </div>

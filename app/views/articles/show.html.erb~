@@ -20,12 +20,36 @@
 				<td><%= comment.content %></td>
 			</tr>
 			<% end %>
-			
 		</tbody>
-
-
 	<hr/>
 	</table>
+<a href="<%= article_path(@article.id, :format => "pdf") %>" class="animate">
+
+			
+				<%= form_for @comment, :html => {:class => "form-horizontal", :role => "form"} do |f| %>
+					<div class="form-group">
+					<div class="col-sm-5">
+					<%= f.hidden_field :article_id, value: @article.id %>
+<%= f.hidden_field :user_is, value: @article.id %>
+						<%= f.text_field :content, {:class => "form-control", :required => "required", :placeholder => "Insert your comment .."} %>
+					</div>
+					<% if @comment.errors[:content].any? %>
+					<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+						<div class="alert alert-danger" style="padding:1%; padding-left:3%; margin:0;">
+							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+							<strong>Error!</strong> Content <%= @comment.errors[:content].first unless @comment.errors[:content].blank? %>
+						</div>
+					</div>
+					<% end %>
+				</div>
+
+					<div class="form-group">
+						<div class="col-sm-10 col-sm-offset-2">
+							<%= f.submit "Add Comments", class: "btn btn-default btn-primary" %> 
+						</div>
+					</div>
+				<% end %>
+
 
 <p><%= link_to 'back to index', articles_path %></p>
 

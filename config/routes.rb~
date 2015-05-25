@@ -5,16 +5,17 @@ AppRuby::Application.routes.draw do
   #resources :users
 
 #aktifin artikel dan comments
-  root :to => "articles#index"
-  resources :articles
+  root "articles#index"
+  resources :articles do 
+	post :import 
+	end
+
+  resources :comments
   
   #get "articles/index"
   #get "articles/new"
   #get "articles/edit"
   #get "articles/show"
-  
-  
-
 	
 	#resources :bycycles
 	#get 'bycycles/:id/buy' => 'bycycles#buy', as: :buy
