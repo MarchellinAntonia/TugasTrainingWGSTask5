@@ -43,7 +43,11 @@ end
       format.pdf do
         pdf = ArticlePdf.new(@article)
         send_data pdf.render, filename: @article.title, type: 'application/pdf'
+	
       end
+	format.csv {render text: Article.to_csv}
+	#format.csv {send_data Article.to_csv}
+        format.xlsx {send_data Article.to_xlsx}
     end
   end
 

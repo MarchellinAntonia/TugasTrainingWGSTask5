@@ -1,17 +1,21 @@
 AppRuby::Application.routes.draw do
  
 #aktifin task 3 user dengan bootstrap
-  #root :to => "users#home"
-  #resources :users
+  root :to => "users#home"
+  resources :users
 
 #aktifin artikel dan comments
-  root "articles#index"
-  resources :articles do 
-	post :import 
-	end
+  #root "articles#index"
+  #resources :articles do
+  #  collection { post :import }
+  #end
 
-  resources :comments
+  #resources :comments
   
+
+
+
+
   #get "articles/index"
   #get "articles/new"
   #get "articles/edit"

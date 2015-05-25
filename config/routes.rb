@@ -12,6 +12,10 @@ AppRuby::Application.routes.draw do
 
   resources :comments
   
+
+
+
+
   #get "articles/index"
   #get "articles/new"
   #get "articles/edit"

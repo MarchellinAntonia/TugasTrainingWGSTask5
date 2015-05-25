@@ -23,7 +23,13 @@
 		</tbody>
 	<hr/>
 	</table>
-<a href="<%= article_path(@article.id, :format => "pdf") %>" class="animate">
+
+<%= link_to 'download PDF', article_path(@article.id, :format => "pdf"), :class => "btn btn-xs btn-success" %>
+<%= link_to 'download CSV', article_path(@article.id, :format => "csv"), :class => "btn btn-xs btn-success" %>
+<%= link_to 'download Excel', article_path(@article.id, :format => "xlsx"), :class => "btn btn-xs btn-success" %>	
+
+
+
 
 			
 				<%= form_for @comment, :html => {:class => "form-horizontal", :role => "form"} do |f| %>
