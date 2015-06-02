@@ -10,7 +10,7 @@
 			<td align = 'center'><%= link_to "Add new article", {:controller => "articles", :action => "new" }, :class => "btn btn-sm btn-primary" %></td>
 			<td align = 'center'>or</td>
 			<%= form_tag import_articles_path, multipart: true, :class => "form-horizontal", :role => "form" do %>
-			<td align = 'center'><%= file_field_tag :file, class: "btn btn-default" %>  </td>
+			<td align = 'center'><%= file_field_tag :sample, class: "btn btn-default" %>  </td>
 			<td align = 'center'><%= submit_tag "Import", class: "btn btn-default btn-primary" %></td>
 
                 <% end %>
@@ -20,6 +20,7 @@
     </div>
 
 <div class="panel">
+	<%= link_to 'download All Articles', download_file_articles_path, :class => "btn btn-sm btn-primary" %>
 	<%= will_paginate @articles %>
 
 	<% @articles.each do |article| %>

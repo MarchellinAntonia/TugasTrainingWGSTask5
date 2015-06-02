@@ -35,7 +35,10 @@ end
 gem 'prawn'
 gem 'will_paginate', '~> 3.0.6'
 gem 'roo'
-gem 'protected_attributes'
+gem 'axlsx_rails'
+gem 'rubyzip'
+gem 'axlsx', :github=>'Randym/axlsx'
+#gem 'protected_attributes'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

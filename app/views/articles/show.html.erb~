@@ -4,7 +4,11 @@
 	  
 	</div>
 <p><%= @article.content %></p>
+<%= link_to 'download PDF', article_path(@article.id, :format => "pdf"), :class => "btn btn-xs btn-success" %>
+<a href="<%= @article.id %>/downloads" class="btn btn-xs btn-success" >download as excel </a>
 
+
+<div id = "commentlist">
 <table class="table table-hover">
 		<thead>
 			<tr>
@@ -23,16 +27,8 @@
 		</tbody>
 	<hr/>
 	</table>
-
-<%= link_to 'download PDF', article_path(@article.id, :format => "pdf"), :class => "btn btn-xs btn-success" %>
-<%= link_to 'download CSV', article_path(@article.id, :format => "csv"), :class => "btn btn-xs btn-success" %>
-<%= link_to 'download Excel', article_path(@article.id, :format => "xlsx"), :class => "btn btn-xs btn-success" %>	
-
-
-
-
-			
-				<%= form_for @comment, :html => {:class => "form-horizontal", :role => "form"} do |f| %>
+</div>
+				<%= form_for @comment, :html => {:class => "form-horizontal", :role => "form"}, remote: true do |f| %>
 					<div class="form-group">
 					<div class="col-sm-5">
 					<%= f.hidden_field :article_id, value: @article.id %>

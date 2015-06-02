@@ -4,10 +4,11 @@ AppRuby::Application.routes.draw do
   #root :to => "users#home"
   #resources :users
 
-#aktifin artikel dan comments
   root "articles#index"
+  get "articles/:article/downloads" => "articles#download_satuan"
   resources :articles do
     collection { post :import }
+    collection{ get :download_file }
   end
 
   resources :comments

@@ -1,7 +1,7 @@
 require 'roo'
 require 'csv'
 class Article < ActiveRecord::Base
-attr_accessible :title, :content
+#attr_accessible :title, :content
 validates :title, presence: true,
 
                             length: { minimum: 5 }
