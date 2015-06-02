@@ -88,15 +88,15 @@ def download_file
     xlsx = Axlsx::Package.new
     wb = xlsx.workbook
     wb.add_worksheet(name: "Articles") do |sheet|
-      sheet.add_row ["ID", "Title", "Body", "Created At", "Updated At"]
+      sheet.add_row ["Title", "Body", "Created At", "Updated At"]
       @articles.each do |article|
-        sheet.add_row [article.id, article.title, article.content, article.created_at, article.updated_at]
+        sheet.add_row [ article.title, article.content, article.created_at, article.updated_at]
       end
     end
     wb.add_worksheet(name: "Comments") do |sheet|
-      sheet.add_row ["ID", "Article ID", "Body", "Created At", "Updated At"]
+      sheet.add_row ["Article ID", "Body", "Created At", "Updated At"]
       @comments.each do |comment|
-        sheet.add_row [comment.id, comment.article_id, comment.content, comment.created_at, comment.updated_at]
+        sheet.add_row [comment.article_id, comment.content, comment.created_at, comment.updated_at]
       end
     end
 
@@ -110,13 +110,13 @@ def download_satuan
     xlsx = Axlsx::Package.new
     wb = xlsx.workbook
     wb.add_worksheet(name: "Articles") do |sheet|
-      sheet.add_row ["ID", "Title", "Content", "Created At", "Updated At"]
-      sheet.add_row [@article.id, @article.title, @article.content, @article.created_at, @article.updated_at]
+      sheet.add_row ["Title", "Content", "Created At", "Updated At"]
+      sheet.add_row [@article.title, @article.content, @article.created_at, @article.updated_at]
     end
     wb.add_worksheet(name: "Comments") do |sheet|
-      sheet.add_row ["ID", "Article ID", "User_is", "Content", "Created At", "Updated At"]
+      sheet.add_row ["Article ID", "User_is", "Content", "Created At", "Updated At"]
       @comments.each do |comment|
-        sheet.add_row [comment.id, comment.user_is, comment.article_id, comment.content, comment.created_at, comment.updated_at]
+        sheet.add_row [comment.user_is, comment.article_id, comment.content, comment.created_at, comment.updated_at]
       end
     end
 
